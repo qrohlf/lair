@@ -1,0 +1,49 @@
+{
+  "name": "puppetlabs-ruby",
+  "version": "0.1.0",
+  "summary": "Puppet Labs Ruby Module",
+  "source": "https://github.com/puppetlabs/puppetlabs-ruby",
+  "project_page": "https://github.com/puppetlabs/puppetlabs-ruby",
+  "author": "Puppet Labs",
+  "license": "Apache License 2.0",
+  "operatingsystem_support": [
+    "RedHat",
+    "OpenSUSE",
+    "SLES",
+    "SLED",
+    "Debian",
+    "Ubuntu"
+  ],
+  "puppet_version": [
+    2.7,
+    3.0,
+    3.1,
+    3.2,
+    3.3
+  ],
+  "description": "Ruby Module for Puppet",
+  "dependencies": [
+
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "CHANGELOG": "2eb56073328fd920b96b388d95c73473",
+    "Gemfile": "19e0d6f8d04c49bdf6b633a2758c9204",
+    "Gemfile.lock": "f4391024d9564fc7b9475743007aeae3",
+    "LICENSE": "b3f8a01d8699078d82e8c3c992307517",
+    "Modulefile": "eaed4b7018419f7385c58567216a5cbd",
+    "README.md": "fa51ccf53fb061ea8119e23cf717d663",
+    "Rakefile": "0254db5d3fc38c67a2c160d7296a24f8",
+    "lib/facter/gemhome.rb": "a9eeb4dda783c97f89c37541af28afb7",
+    "manifests/dev.pp": "ee5276a5772eee8c68204c4463842f03",
+    "manifests/init.pp": "cea631d674f6ee5ca36752cc7d35ae2d",
+    "manifests/params.pp": "b89d96c85b942d8f4d4447d597519c2b",
+    "spec/classes/ruby_spec.rb": "ffcf18046ac223aad3f1bdc09422caf6",
+    "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+    "tests/dev.pp": "4d74853324ca33cc13995f7819948f83",
+    "tests/init.pp": "c3c821d5d8b70fcc6ecbd0b15ed53109",
+    "tests/params.pp": "624af9411bd668264baef475bcc9e54b"
+  }
+}

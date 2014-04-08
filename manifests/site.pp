@@ -1,4 +1,4 @@
-include apt, git
+include apt, git, scout, nginx
 
 # Set the default exec path
 Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/local/bin/", "/usr/sbin/" ] }
@@ -12,4 +12,14 @@ exec {"reload-avahi":
 
 class {'dokku':
     version => 'v0.2.2',
+}
+
+nginx::resource::upstream { 'scout_stats':
+  members => [
+    'localhost:5555'
+  ]
+}
+
+nginx::resource::vhost { "stats.$fqdn":
+  proxy => 'http://scout_stats',
 }

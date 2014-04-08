@@ -1,23 +1,41 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
+    jfryman/nginx (0.0.9)
+      puppetlabs/apt (>= 1.0.0)
+      puppetlabs/concat (>= 1.0.0)
+      puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/apt (1.4.2)
       puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/concat (1.1.0-rc1)
+      puppetlabs/stdlib (>= 3.0.0)
     puppetlabs/git (0.0.3)
+    puppetlabs/ruby (0.1.0)
     puppetlabs/stdlib (4.1.0)
     puppetlabs/vcsrepo (0.2.0)
 
 GIT
   remote: git://github.com/qrohlf/puppet-dokku.git
   ref: master
-  sha: 89d9b8203777bf741a59a672d91463c447e57540
+  sha: de2bc2fc4782ed527a167b6e05317bd668a3655b
   specs:
     qrohlf/dokku (0.1.0)
       puppetlabs/git (>= 0)
       puppetlabs/vcsrepo (>= 0)
 
+GIT
+  remote: git://github.com/qrohlf/puppet-scout-realtime.git
+  ref: master
+  sha: 9436f05a3ff98de659c0014ed4c1f0bf714510c4
+  specs:
+    qrohlf/scout (0.1.0)
+      puppetlabs/apt (>= 0)
+      puppetlabs/ruby (>= 0)
+
 DEPENDENCIES
+  jfryman/nginx (>= 0)
   puppetlabs/apt (>= 0)
   puppetlabs/git (>= 0)
   qrohlf/dokku (>= 0)
+  qrohlf/scout (>= 0)
 
