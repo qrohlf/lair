@@ -29,8 +29,7 @@ If you were previously running a different VM at the same address, ssh is going 
 
 The solution is to just remove the outdated keys:
 ```bash
-ssh-keygen -R [localhost]:2222
-ssh-keygen -R wardenclyffe.local
+ssh-keygen -R [localhost]:2222 && ssh-keygen -R wardenclyffe.local
 ```
 
 ### The "make install" provisioning step takes a long time
@@ -46,5 +45,5 @@ cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$U
 or, if you're running Wardenclyffe locally with Vagrant:
 
 ```bash
-cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
+cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
 ```

@@ -10,14 +10,13 @@ FORGE
     puppetlabs/concat (1.1.0-rc1)
       puppetlabs/stdlib (>= 3.0.0)
     puppetlabs/git (0.0.3)
-    puppetlabs/ruby (0.1.0)
     puppetlabs/stdlib (4.1.0)
     puppetlabs/vcsrepo (0.2.0)
 
 GIT
   remote: git://github.com/qrohlf/puppet-dokku.git
   ref: master
-  sha: de2bc2fc4782ed527a167b6e05317bd668a3655b
+  sha: d669f84f939fe1cd8bbb854a519fee96e5e2c122
   specs:
     qrohlf/dokku (0.1.0)
       puppetlabs/git (>= 0)
@@ -26,11 +25,17 @@ GIT
 GIT
   remote: git://github.com/qrohlf/puppet-scout-realtime.git
   ref: master
-  sha: 9436f05a3ff98de659c0014ed4c1f0bf714510c4
+  sha: 22a2cdf2dbc3213345f52acdf2c4a518615c461f
   specs:
     qrohlf/scout (0.1.0)
       puppetlabs/apt (>= 0)
-      puppetlabs/ruby (>= 0)
+
+GIT
+  remote: git://github.com/qrohlf/wardenclyffe_default.git
+  ref: master
+  sha: 4d63a9184d46d4714f8886fe82384b32af34f8e2
+  specs:
+    qrohlf/wardenclyffe_default (0.1.0)
 
 DEPENDENCIES
   jfryman/nginx (>= 0)
@@ -38,4 +43,5 @@ DEPENDENCIES
   puppetlabs/git (>= 0)
   qrohlf/dokku (>= 0)
   qrohlf/scout (>= 0)
+  qrohlf/wardenclyffe_default (>= 0)
 

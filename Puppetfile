@@ -12,3 +12,6 @@ mod "qrohlf/dokku",
 
 mod "qrohlf/scout",
     :git => "git://github.com/qrohlf/puppet-scout-realtime.git"
+
+mod "qrohlf/wardenclyffe_default",
+    :git => "git://github.com/qrohlf/wardenclyffe_default.git"
