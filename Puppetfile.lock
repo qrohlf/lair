@@ -1,0 +1,23 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    puppetlabs/apt (1.4.2)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/git (0.0.3)
+    puppetlabs/stdlib (4.1.0)
+    puppetlabs/vcsrepo (0.2.0)
+
+GIT
+  remote: git://github.com/qrohlf/puppet-dokku.git
+  ref: master
+  sha: 89d9b8203777bf741a59a672d91463c447e57540
+  specs:
+    qrohlf/dokku (0.1.0)
+      puppetlabs/git (>= 0)
+      puppetlabs/vcsrepo (>= 0)
+
+DEPENDENCIES
+  puppetlabs/apt (>= 0)
+  puppetlabs/git (>= 0)
+  qrohlf/dokku (>= 0)
+
