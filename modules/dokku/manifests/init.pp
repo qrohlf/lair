@@ -19,6 +19,7 @@ class dokku ($version = "v0.2.2") {
     package { 'software-properties-common': ensure => installed }
     package { "python-software-properties": ensure => installed }
     package { "wget": ensure => installed }
+    package { "build-essential": ensure => installed }
 
 
     vcsrepo { "/usr/src/dokku":
@@ -31,8 +32,9 @@ class dokku ($version = "v0.2.2") {
     exec { "dokku-install":
         cwd => '/usr/src/dokku',
         command =>  "make install",
+        timeout => "900", #it might take up to 15 minutes to install the whole shebang
         logoutput => "true",
-        require => Vcsrepo["/usr/src/dokku"],
-        unless => "grep '^$version\$' /home/dokku/VERSION"
+        unless => "grep '^$version\$' /home/dokku/VERSION",
+        require => [Vcsrepo["/usr/src/dokku"], Package['wget'], Package['build-essential'], Package['software-properties-common'], Package['python-software-properties']]
     }
 }
