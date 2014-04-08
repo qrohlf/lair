@@ -47,3 +47,19 @@ or, if you're running Wardenclyffe locally with Vagrant:
 ```bash
 cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
 ```
+
+# DigitalOcean Install Notes
+- Spin up a 12.04 x64 droplet
+- Follow instructions for installing puppet at http://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html#for-debian-and-ubuntu
+
+```
+ssh root@192.241.227.65
+wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
+sudo dpkg -i puppetlabs-release-precise.deb
+sudo apt-get update
+sudo apt-get install puppet-common
+sudo apt-get install git
+git clone https://github.com/qrohlf/Wardenclyffe.git
+cd Wardenclyffe
+FACTER_fqdn='kerouac.qrohlf.com' puppet apply --verbose --debug --modulepath modules --manifestdir manifests --detailed-exitcodes manifests/site.pp
+```
