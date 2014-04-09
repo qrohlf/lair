@@ -9,6 +9,10 @@ cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@
 ```
 ## Installing on a Server
 ```bash
+wget -qO- https://raw.github.com/qrohlf/Wardenclyffe/master/bootstrap.sh | sudo bash
+```
+
+```bash
 cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
 ```
 
@@ -46,6 +50,13 @@ cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@
 # DigitalOcean Install Notes
 - Spin up a 12.04 x64 droplet
 - Follow instructions for installing puppet at http://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html#for-debian-and-ubuntu
+
+```
+ssh user@host.com
+sudo apt-get install git
+git clone https://github.com/qrohlf/Wardenclyffe.git
+make install
+```
 
 ```
 ssh root@192.241.227.65

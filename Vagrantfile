@@ -1,19 +1,9 @@
 VAGRANTFILE_API_VERSION = "2"
-
-# fix for vagrant not setting the FQDN correctly in the hosts file
-hostentry = "127.0.0.1 wardenclyffe.local wardenclyffe"
-fqdn = <<SCRIPT
-if grep --quiet '#{hostentry}' /etc/hosts; then
-    echo "hosts file configured correctly"
-else
-    echo '#{hostentry}' >> /etc/hosts
-    echo "added fqdn to host file"
-fi
-SCRIPT
+ENV['FQDN'] ||= "wardenclyffe.local"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise64"
-  config.vm.hostname = "wardenclyffe.local"
+  config.vm.hostname = ENV['FQDN']
   config.vm.network :private_network, ip: "10.1.1.2"
 
   config.vm.provider :virtualbox do |vb|
@@ -21,7 +11,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision :shell do |shell|
-    shell.inline = fqdn
+    shell.path = 'scripts/set-fqdn.sh'
+    shell.args = ENV['FQDN']
   end
 
   config.vm.provision :puppet do |puppet|
@@ -29,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifest_file  = "site.pp"
     puppet.module_path   = "modules"
     puppet.options="--verbose --debug"
-    puppet.facter = {fqdn: 'wardenclyffe.local'}
+    puppet.facter = {fqdn: ENV['FQDN']}
   end
 
   config.vm.provision :shell do |shell|
