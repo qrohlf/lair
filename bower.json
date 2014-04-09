@@ -1,0 +1,21 @@
+{
+  "name": "wardenclyffe-site",
+  "version": "0.0.1",
+  "homepage": "https://github.com/qrohlf/Wardenclyffe",
+  "authors": [
+    "Quinn Rohlf <qr@qrohlf.com>"
+  ],
+  "description": "Github Pages site for Wardenclyffe",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
+}

@@ -3,3 +3,4 @@ markdown: redcarpet
 highlighter: pygments
 description: "Deploy like a badass."
 url: "http://github.com/qrohlf/Wardenclyffe"
+baseurl: /Wardenclyffe
