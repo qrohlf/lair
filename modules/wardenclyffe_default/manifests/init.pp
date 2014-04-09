@@ -51,8 +51,12 @@ class wardenclyffe_default {
     }
 
     file {'/etc/nginx/sites-enabled/wardenclyffe_default.conf':
-        ensure => link,
+        ensure => 'link',
         target => '/etc/nginx/sites-available/wardenclyffe_default.conf',
+    }
+
+    file {'/etc/nginx/sites-enabled/default':
+        ensure => 'absent'
     }
 
     exec {"reload-nginx":
