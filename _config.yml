@@ -1,6 +1,6 @@
-name: Wardenclyffe by @qrohlf
+name: Lair
 markdown: redcarpet
 highlighter: pygments
-description: "Deploy like a badass."
-url: "http://github.com/qrohlf/Wardenclyffe"
-baseurl: /Wardenclyffe
+description: "Deploy with vigor"
+url: "http://github.com/qrohlf/lair"
+baseurl: /lair
