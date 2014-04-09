@@ -9,7 +9,7 @@ cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@
 ```
 ## Installing on a Server
 ```bash
-wget -qO- https://raw.github.com/qrohlf/Wardenclyffe/master/bootstrap.sh | sudo bash
+FQDN='kerouac.qrohlf.com' wget -qO- https://raw.github.com/qrohlf/Wardenclyffe/master/bootstrap.sh | sudo bash
 ```
 
 ```bash
@@ -31,8 +31,8 @@ The solution is to just remove the outdated keys:
 ssh-keygen -R [localhost]:2222 && ssh-keygen -R wardenclyffe.local
 ```
 
-### The "make install" provisioning step takes a long time
-It's supposed to; dokku is downloading a decently-sized VM image in the background. Just sit tight and let the provisioning scripts do their thing.
+### The "Executing 'make install'" provisioning step takes a long time
+It's supposed to; dokku is downloading a 350MB VM image in the background. Just sit tight and let the provisioning scripts do their thing.
 
 ### Git/ssh asks me for a password when I try to deploy
 You probably haven't added your ssh key to Dokku. Make sure to run this on your local machine to upload your key:
