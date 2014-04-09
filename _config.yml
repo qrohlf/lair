@@ -1,6 +1,6 @@
 name: Lair
 markdown: redcarpet
 highlighter: pygments
-description: "Deploy with vigor"
+description: "deploy with style"
 url: "http://github.com/qrohlf/lair"
 baseurl: /lair
