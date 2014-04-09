@@ -1,6 +1,6 @@
 #!/bin/bash
 # 
-# Wardenclyffe installation bootstrap script by @qrohlf
+# Lair installation bootstrap script by @qrohlf
 # borrows heavily from https://github.com/progrium/dokku/blob/master/bootstrap.sh
 
 # nice colorized output
@@ -37,10 +37,10 @@ cd ~ && test -d Wardenclyffe || git clone https://github.com/qrohlf/Wardenclyffe
 cd Wardenclyffe
 git fetch origin
 
-if [[ -n $WARDEN_BRANCH ]]; then
-  git checkout origin/$WARDEN_BRANCH
-elif [[ -n $WARDEN_TAG ]]; then
-  git checkout $WARDEN_TAG
+if [[ -n $LAIR_BRANCH ]]; then
+  git checkout origin/$LAIR_BRANCH
+elif [[ -n $LAIR_TAG ]]; then
+  git checkout $LAIR_TAG
 fi
 
 log "setting fqdn to $DOMAIN"

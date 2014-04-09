@@ -1,3 +1,11 @@
+# Lair
+
+Lair is a set of open source web deployment tools packaged into a set of Puppet and Vagrant scripts so that you can install an awesome deployment environment locally or on a server with a single command.  Basically, Lair is your own no-configuration-required mini Heroku.
+
+## Installation
+
+There are two ways to install lair. If you want to use lair to test your apps locally or try out lair without setting up a server, you can install it locally using Vagrant. If you've got a server to run Lair on, you can set it up with a single command using Puppet.
+
 ## Installing Locally with Vagrant
 
 ### Prerequisites:
@@ -9,7 +17,7 @@ cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@
 ```
 ## Installing on a Server
 ```bash
-FQDN='kerouac.qrohlf.com' wget -qO- https://raw.github.com/qrohlf/Wardenclyffe/master/bootstrap.sh | sudo bash
+FQDN='kerouac.qrohlf.com' wget -qO- https://raw.github.com/qrohlf/lair/master/bootstrap.sh | sudo bash
 ```
 
 ```bash
@@ -28,7 +36,7 @@ If you were previously running a different VM at the same address, ssh is going 
 
 The solution is to just remove the outdated keys:
 ```bash
-ssh-keygen -R [localhost]:2222 && ssh-keygen -R wardenclyffe.local
+ssh-keygen -R [localhost]:2222 && ssh-keygen -R lair.local
 ```
 
 ### The "Executing 'make install'" provisioning step takes a long time
@@ -41,31 +49,8 @@ You probably haven't added your ssh key to Dokku. Make sure to run this on your 
 cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
 ```
 
-or, if you're running Wardenclyffe locally with Vagrant:
+or, if you're running Lair locally with Vagrant:
 
 ```bash
 cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
-```
-
-# DigitalOcean Install Notes
-- Spin up a 12.04 x64 droplet
-- Follow instructions for installing puppet at http://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html#for-debian-and-ubuntu
-
-```
-ssh user@host.com
-sudo apt-get install git
-git clone https://github.com/qrohlf/Wardenclyffe.git
-make install
-```
-
-```
-ssh root@192.241.227.65
-wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
-sudo dpkg -i puppetlabs-release-precise.deb
-sudo apt-get update
-sudo apt-get install puppet-common
-sudo apt-get install git
-git clone https://github.com/qrohlf/Wardenclyffe.git
-cd Wardenclyffe
-FACTER_fqdn='kerouac.qrohlf.com' puppet apply --verbose --debug --modulepath modules --manifestdir manifests --detailed-exitcodes manifests/site.pp
 ```

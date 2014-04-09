@@ -1,5 +1,5 @@
 VAGRANTFILE_API_VERSION = "2"
-ENV['FQDN'] ||= "wardenclyffe.local"
+ENV['FQDN'] ||= "lair.local"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise64"
