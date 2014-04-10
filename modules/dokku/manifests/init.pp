@@ -27,6 +27,7 @@ class dokku ($version = "v0.2.2") {
         provider => git,
         revision => $version,
         source => "https://github.com/progrium/dokku.git",
+        notify => Exec['dokku-install']
     }
 
     exec { "dokku-install":
@@ -34,7 +35,7 @@ class dokku ($version = "v0.2.2") {
         command =>  "make install",
         timeout => "900", #it might take up to 15 minutes to install the whole shebang
         logoutput => "true",
-        unless => "grep '^$version\$' /home/dokku/VERSION",
+        refreshonly => "true",
         require => [Vcsrepo["/usr/src/dokku"], Package['wget'], Package['build-essential'], Package['software-properties-common'], Package['python-software-properties']]
     }
 }

@@ -12,7 +12,7 @@ exec {"reload-avahi":
 
 # install dokku
 class {'dokku':
-    version => 'v0.2.2',
+    version => 'master',
 }
 
 package { "nginx":

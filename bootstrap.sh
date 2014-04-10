@@ -14,7 +14,7 @@ error() {
 
 if ! which apt-get &>/dev/null
 then
-  error "This installation script requires apt-get. For manual installation instructions, consult https://github.com/qrohlf/Wardenclyffe."
+  error "This installation script requires apt-get. For manual installation instructions, consult https://github.com/qrohlf/lair."
   exit 1
 fi
 
@@ -32,9 +32,9 @@ sudo apt-get -y install git wget build-essential software-properties-common
 log "installing puppet"
 sudo apt-get install -y puppet-common
 
-log "cloning Wardenclyffe repo"
-cd ~ && test -d Wardenclyffe || git clone https://github.com/qrohlf/Wardenclyffe
-cd Wardenclyffe
+log "cloning lair repo"
+cd ~ && test -d lair || git clone https://github.com/qrohlf/lair
+cd lair
 git fetch origin
 
 if [[ -n $LAIR_BRANCH ]]; then
@@ -46,4 +46,4 @@ fi
 log "setting fqdn to $DOMAIN"
 ./set-fqdn.sh $DOMAIN
 log "provisioning with Puppet... this will take a while"
-FACTER_fqdn="$DOMAIN" puppet apply --verbose --debug --modulepath modules --manifestdir manifests --detailed-exitcodes manifests/site.pp
+FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests --detailed-exitcodes manifests/site.pp
