@@ -8,8 +8,8 @@ log() {
     printf "\e[0;35;49m$1\e[0m\n"
 }
 
-error() {
-    printf "\e[0;33;49m$1\e[0m"
+error_msg() {
+    printf "\e[0;33;49m$1\e[0m\n"
 }
 
 success() {
@@ -17,12 +17,12 @@ success() {
 }
 
 if ! which apt-get &>/dev/null; then
-    error "This installation script requires apt-get. For manual installation instructions, consult https://github.com/qrohlf/lair."
+    error_msg "This installation script requires apt-get. For manual installation instructions, consult https://github.com/qrohlf/lair."
     exit 1
 fi
 
 if ! [[ -n $DOMAIN ]]; then
-    error "You need to set the DOMAIN environment variable for this installer to work!"
+    error_msg "You need to set the DOMAIN environment variable for this installer to work!"
     exit 1
 fi
 
