@@ -74,6 +74,7 @@ html {
 
 header {
   color: white;
+  background-color: saturate($palette-1, 20%);
   h1 {
     font-size: $font-size-base*4;
     font-weight: 600;
