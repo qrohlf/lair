@@ -2,32 +2,7 @@
 
 Lair is a set of open source web deployment tools packaged into a set of Puppet and Vagrant scripts so that you can install an awesome deployment environment locally or on a server with a single command.  Basically, Lair is your own no-configuration-required mini Heroku.
 
-## Installation
-
-There are two ways to install lair. If you want to use lair to test your apps locally or try out lair without setting up a server, you can install it locally using Vagrant. If you've got a server to run Lair on, you can set it up with a single command using Puppet.
-
-## Installing Locally with Vagrant
-
-### Prerequisites:
-- [Vagrant](http://www.vagrantup.com/downloads.html)
-
-Add your ssh key to Dokku so that you can deploy apps via ssh:
-```bash
-cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
-```
-## Installing on a Server
-```bash
-FQDN='kerouac.qrohlf.com' wget -qO- https://raw.github.com/qrohlf/lair/master/bootstrap.sh | sudo bash
-```
-
-```bash
-cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
-```
-
-## Advanced
-
-Updating the puppet modules:
-librarian-puppet update
+For more info, see the [project page](https://qrohlf.com/lair)
 
 ## Troubleshooting
 
