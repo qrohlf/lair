@@ -60,6 +60,9 @@ img {
     border-radius: 5px;
     padding: 2px;
   }
+  background-color: #fff;
+  position: relative;
+  z-index: 99;
 }
 
 /* Sticky footer styles
@@ -99,6 +102,9 @@ header {
   background-image: url(../images/background-header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 body {
