@@ -33,7 +33,7 @@ Before installing Lair on your server, make sure your server environment is supp
 To install Lair, ssh into your server and run the installer:
 
 ```bash
-DOMAIN='yourdomain.com' wget -qO- https://raw.github.com/qrohlf/lair/master/bootstrap.sh | sudo bash
+DOMAIN='yourdomain.com' bash <(curl -s https://raw.github.com/qrohlf/lair/master/bootstrap.sh)
 ```
 
 Once Lair finishes installing, head over to http://yourdomain.com to deploy your first app!
