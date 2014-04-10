@@ -26,8 +26,8 @@ log "executing apt-get update"
 sudo apt-get update
 
 log "installing dependencies"
-sudo apt-get -y install git wget build-essential software-properties-common
-[[ `lsb_release -sr` == "12.04" ]] && apt-get install -y python-software-properties
+sudo apt-get -y install git wget software-properties-common
+[[ `lsb_release -sr` == "12.04" ]] && apt-get install -y python-software-properties # needed by dokku on 12.04
 
 log "installing puppet"
 sudo apt-get install -y puppet-common
