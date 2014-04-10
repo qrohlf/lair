@@ -37,4 +37,9 @@ class dokku ($version = "v0.2.2") {
         # refreshonly => "true", this is not really that useful
         require => [Vcsrepo["/usr/src/dokku"], Package['wget'], Package['build-essential'], Package['software-properties-common'], Package['python-software-properties']]
     }
+
+    exec {"dokku-reload-nginx":
+        command => 'sudo nginx -s reload',
+        require => [Service['nginx'], Exec['dokku-install']]
+    }
 }
