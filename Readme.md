@@ -108,6 +108,10 @@ Lair is actually just a bundle that brings together several excellent tools into
 - [Puppet](https://puppetlabs.com) is the glue that holds it all together
 - I also was inspired by [Vagrantpress](http://vagrantpress.org) and used their puppet scripts as a reference while I was writing some of the modules used in Lair.
 
+# Troubleshooting
+
+See the Lair [Wiki](https://github.com/qrohlf/lair/wiki/Troubleshooting) for help with troubleshooting.
+
 # Contributing
 
 Pull requests are welcome! Fork Lair on [Github](https://github.com/qrohlf/lair/fork)
