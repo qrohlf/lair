@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.png">
 
     <title>Congratulations! &middot; Lair </title>
 
@@ -30,8 +30,9 @@
   </div>
 </header>
 
-    <div class="container site-content">
-      <h1>You did it!</h1>
+    <div class="site-content">
+        <div class="container">
+          <h1>You did it!</h1>
 
 <p>Lair is now running on this machine. <strong>Time to deploy some apps!</strong></p>
 
@@ -55,6 +56,17 @@ git push lair master
 </code></pre></div>
 <p>For more information about deploying apps like how to set environment variables for your apps and use custom buildpacks, see the README and documentation for <a href="https://github.com/progrium/dokku">dokku</a>. (Dokku does all the heavy lifting in Lair when it comes to deployment.)</p>
 
+<h1>Live Stats</h1>
+
+<p>Lair provides live stats! Check out your <a href=":5555">stats page</a>. </p>
+
+<p>If you&#39;re running Lair on a server, the stats page is also accessible at port 80 via <code>stats.yourserver.com</code>.</p>
+
+<h1>Enjoy!</h1>
+
+<p>That&#39;s all! To replace this page, push an app to <code>dokku@yourdomain.com:yourdomain.com</code>.</p>
+
+        </div>
     </div>
 
     <footer>
@@ -62,6 +74,19 @@ git push lair master
     <p class="text-muted">Made by <a href="http://qrohlf.com">@qrohlf</a>.</p>
   </div>
 </footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script>
+// parallax header
+jQuery(document).ready(function($) {
+    $(window).scroll( function()
+    {
+        var scroll = $(window).scrollTop(), slowScroll = scroll/4;
+        var headerheight = $('header').height();
+        $('header').css({ transform: "translateY(" + slowScroll + "px)" });
+        $('header .container').css({ opacity: Math.min(1, 1.2 - scroll/headerheight) });
+    });
+});
+</script>
 
     </body>
 </html>
