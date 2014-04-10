@@ -108,7 +108,7 @@ Lair is actually just a bundle that brings together several excellent tools into
 - [scout/scout_realtime](https://github.com/scoutapp/scout_realtime) provides the nice activity monitor
 - [Vagrant](http://www.vagrantup.com) handles VM creation and management
 - [Puppet](https://puppetlabs.com) is the glue that holds it all together
-- I also was inspired by [Vagrantpress](http://vagrantpress.org) and used their puppet scripts as a reference while I was writing some of the modules used in Lair.
+- Lair was inspired by [Vagrantpress](http://vagrantpress.org) and their puppet scripts were a helpful reference while I was writing the modules that power Lair.
 
 # Contributing
 
