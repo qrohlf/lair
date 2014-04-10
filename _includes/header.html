@@ -1,5 +1,6 @@
 <header>
   <div class="container text-center">
-    <h1>{{site.name}} <small>&middot; {{site.description}}</small></h1>
+    <h1>{% if page.title %}{{ page.title }}{% else %}{{site.name}} <small>&middot; {{site.description}}</small>{% endif %}</h1>
+    {%if page.subtitle %}<h2>{{page.subtitle}}</h2>{% endif %}
   </div>
 </header>

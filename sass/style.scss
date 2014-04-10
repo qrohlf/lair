@@ -1,4 +1,5 @@
 @import "mixins";
+@import "pygments";
 // Reference bootstrap variables
 @import "../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap/variables";
 // variable overrides
@@ -9,7 +10,11 @@ $palette-4: #47B6FF;
 $palette-5: #2D85D3;
 
 $font-family-sans-serif: 'Open Sans', sans-serif;
-$headings-font-weight: 300;
+$headings-font-weight: 600;
+$line-height-base: 1.45;
+$line-height-computed: 2*14px;
+$font-size-h2: 20px;
+$font-size-h3: 16px;
 
 //== Container sizes
 //
@@ -32,16 +37,36 @@ $container-lg:                 $container-tablet;
 
 @import "../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap";
 
+h1 {
+  font-weight: 300;
+  margin-top: 64px;
+}
+
+img {
+  @include img-responsive;
+}
+
+.site-content {
+  img.demo {
+    display: none;
+    margin: 40px 0px;
+    @media (min-width: $screen-md-min) {
+      @include center-block;
+    }
+    border-style: solid;
+    background-color: #212121;
+    border-color: $palette-4;
+    border-width: 15px 1px 1px 1px;
+    border-radius: 5px;
+    padding: 2px;
+  }
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
-}
-
-
-.container .text-muted {
-  margin: 20px 0;
 }
 
 header {
@@ -55,9 +80,20 @@ header {
       color: inherit;
     }
   }
+  h2 {
+    font-weight: 300;
+  }
+  a, a:visited, a:hover {
+    text-decoration: underline;
+    color: inherit;
+  }
   > .container {
     padding-top: 6rem;
     padding-bottom: 4rem;
+    @media (min-width: $screen-md-min) {
+      padding-top: 8rem;
+      padding-bottom: 6rem;
+    }
   }
 
   background-image: url(../images/background-header.jpg);
@@ -67,14 +103,20 @@ header {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px; //::after is 12px high
+  margin-bottom: 80px + 60px; //::after is 12px high
 }
+
 footer {
   position: absolute;
-  bottom: 12px;
+  bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 80px;
+  background: darken(white, 10%);
+  border-top: 1px solid darken(white, 15%);
+  .container {
+    margin-top: 30px;
+  }
 
   // &:after {    
   //   display: block;
