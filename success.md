@@ -19,7 +19,7 @@ cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$U
 
 If you have installed Lair to your local machine using Vagrant, run this following command:
 
-```
+```bash
 cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
 ```
 
