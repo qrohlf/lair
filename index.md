@@ -101,6 +101,10 @@ git push lair master
 # that's it!
 ```
 
+# Troubleshooting
+
+See the Lair [Wiki](https://github.com/qrohlf/lair/wiki/Troubleshooting) for help with troubleshooting.
+
 # Credits
 Lair is actually just a bundle that brings together several excellent tools into one environment. The following people and tools do most of the heavy lifting:
 
