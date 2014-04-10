@@ -44,7 +44,7 @@
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash">cat ~/.ssh/id_rsa.pub <span class="p">|</span>ssh you@yourserver.com <span class="s2">&quot;sudo sshcommand acl-add dokku &#39;$USER@$HOSTNAME&#39;&quot;</span>
 </code></pre></div>
 <p>If you have installed Lair to your local machine using Vagrant, run this following command:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost &quot;sudo sshcommand acl-add dokku &#39;$USER@$HOSTNAME&#39;&quot;
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">cat ~/.ssh/id_rsa.pub <span class="p">|</span>ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost <span class="s2">&quot;sudo sshcommand acl-add dokku &#39;$USER@$HOSTNAME&#39;&quot;</span>
 </code></pre></div>
 <p>You&#39;re now ready to deploy your first app to Lair!</p>
 
@@ -77,28 +77,28 @@ git push lair master
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script>
     // parallax header
-    jQuery(document).ready(function($) {
-        $(window).scroll( function()
-        {
-            var scroll = $(window).scrollTop(), slowScroll = scroll/4;
-            var headerheight = $('header').height();
-            $('header').css({ transform: "translateY(" + slowScroll + "px)" });
-            $('header .container').css({ opacity: Math.min(1, 1.2 - scroll/headerheight) });
-        });
-        // fix for relative port urls
-        document.addEventListener('click', function(event) {
-            var target = event.target;
-            if (target.tagName.toLowerCase() == 'a')
-            {
-                var port = target.getAttribute('href').match(/^:(\d+)(.*)/);
-                if (port)
-                {
-                    target.href = port[2];
-                    target.port = port[1];
-                }
-            }
-        }, false);
+jQuery(document).ready(function($) {
+    $(window).scroll( function()
+    {
+        var scroll = $(window).scrollTop(), slowScroll = scroll/3;
+        var headerheight = $('header').height();
+        $('header').css({ transform: "translateY(" + slowScroll + "px)" });
+        $('header .container').css({ opacity: Math.min(1, 1.2 - scroll/headerheight) });
     });
+});
+    // fix for relative port url
+    document.addEventListener('click', function(event) {
+        var target = event.target;
+        if (target.tagName.toLowerCase() == 'a')
+        {
+            var port = target.getAttribute('href').match(/^:(\d+)(.*)/);
+            if (port)
+            {
+                target.href = port[2];
+                target.port = port[1];
+            }
+        }
+    }, false);
     </script>
     </body>
 </html>
