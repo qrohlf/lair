@@ -6,16 +6,18 @@ subtitle: by <a href="http://qrohlf.com/">@qrohlf</a> &middot; view on <a href="
 
 <img src="./images/terminal.gif" class="demo" alt="demo video" />
 
-Lair is a Platform as a Service provider that you can install with a single command through the magic of Vagrant and Puppet. It lets you do a simple `git push` to get your latest code up and running.
+Lair is a Platform as a Service provider that you can install on your server or development machine with a single command.  
 
-It even includes a realtime activity monitor, so you can see what's going on under the hood, from the comfort of your browser.
+Lair lets you get your latest code up and running with a simple `git push`, and even includes a realtime activity monitor, so you can see what's going on under the hood, from the comfort of your browser.
 
 Basically, Lair is your own personal Heroku-in-a-box.
 
 # Features
 
-- Buildpack powered deployments with dokku and buildstep
-- Real-time server statistics with scout_realtime
+- Git powered deployments with [dokku](https://github.com/progrium/dokku)
+- Buildpack support via [buildstep](https://github.com/progrium/buildstep)
+- Real-time server statistics with [scout_realtime](https://github.com/scoutapp/scout_realtime)
+- Painless updates through git and puppet
 
 # Installation
 
@@ -30,25 +32,26 @@ Each of these methods is explained below
 ## Installing on a Server with bootstrap.sh
 Before installing Lair on your server, make sure your server environment is supported. Lair is built and tested using an Ubuntu 12.04.4 x64 DigitalOcean Droplet, but it should work on any server provided you're running a fresh copy of Ubuntu 13.04 or 12.04 x64 (13.10 is **not** supported due to a known issue with docker).
 
-```bash
-DOMAIN='yourdomain.com' wget -qO- https://raw.github.com/qrohlf/lair/master/bootstrap.sh | sudo bash
-```
+To install Lair, ssh into your server and run the installer:
 
 ```bash
-cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
+$ DOMAIN='yourdomain.com' wget -qO- https://raw.github.com/qrohlf/lair/master/bootstrap.sh | sudo bash
 ```
+
+Then, follow the deployment instructions to deploy your first app!
 
 ## Installing Locally with Vagrant
 First, make sure you have [Vagrant](http://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed on your machine.
 
-Add your ssh key to Dokku so that you can deploy apps via ssh:
+Then, clone the repo and start Vagrant:
 
 ```bash
-git clone https://github.com/qrohlf/lair.git
-cd lair
-vagrant up
-cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
+$ git clone https://github.com/qrohlf/lair.git
+$ cd lair
+$ vagrant up
 ```
+
+Finally, follow the deployment instructions to deploy your first app!
 
 ## Installing Manually
 Lair is really just a collection of Puppet scripts and modules, so it should be really easy to get it working on any machine that has puppet installed. 
@@ -56,11 +59,44 @@ Lair is really just a collection of Puppet scripts and modules, so it should be 
 Assuming you have Puppet already installed, all you need to do to get Lair up and running is:
 
 ```bash
-export DOMAIN='yourdomain.com'
-git clone https://github.com/qrohlf/lair
-cd lair
-./set-fqdn.sh $DOMAIN
-FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests manifests/site.pp
+$ export DOMAIN='yourdomain.com'
+$ git clone https://github.com/qrohlf/lair
+$ cd lair
+$ ./set-fqdn.sh $DOMAIN
+$ FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests manifests/site.pp
+```
+
+# Deploying to Lair
+
+## SSH Key Setup
+You'll need to add an ssh key to Lair for each machine you want to deploy from. You'll only need to run this command once per machine.  
+(note: run this on your development machine - not on the server)
+
+```bash
+$ cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
+```
+
+If you're using Lair locally with Vagrant, run this command instead:
+
+```bash
+cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
+```
+
+## Deploying with Git
+
+First, add a git remote pointing to Lair (this only needs to be done once per repo). Replace `yourdomain.com` with your domain, or `lair.local` if you're running Lair locally.
+
+```bash
+git remote add lair dokku@yourdomain.com:subdomain 
+```
+
+Then, whenever you have changes to deploy just push them to the lair remote:
+
+```bash
+# make some changes to your app
+git commit -m "awesome new feature"
+git push lair master
+# that's it!
 ```
 
 # Credits
