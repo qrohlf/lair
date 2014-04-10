@@ -44,7 +44,14 @@ elif [[ -n $LAIR_TAG ]]; then
     git checkout $LAIR_TAG
 fi
 
-log "setting fqdn to $DOMAIN"
-./scripts/set-fqdn.sh $DOMAIN
+if [[ -n $DOMAIN ]]; then 
+    log "setting fqdn to $DOMAIN"
+    ./scripts/set-fqdn.sh $DOMAIN
+fi
 log "provisioning with Puppet... this will take a while"
 FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests --detailed-exitcodes manifests/site.pp
+
+if [[ -n $DOMAIN ]]; then 
+    "writing $DOMAIN to /home/dokku/VHOST"
+    echo "$DOMAIN" > /home/dokku/VHOST
+fi
