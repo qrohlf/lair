@@ -33,14 +33,15 @@ log "installing puppet"
 sudo apt-get install -y puppet-common
 
 log "cloning lair repo"
-cd ~ && test -d lair || git clone https://github.com/qrohlf/lair
+cd ~ && test -d lair || git clone -b master --single-branch https://github.com/qrohlf/lair
 cd lair
-git fetch origin
 
 if [[ -n $LAIR_BRANCH ]]; then
-  git checkout origin/$LAIR_BRANCH
+    git fetch origin $LAIR_BRANCH
+    git checkout origin/$LAIR_BRANCH
 elif [[ -n $LAIR_TAG ]]; then
-  git checkout $LAIR_TAG
+    git fetch origin $LAIR_TAG
+    git checkout $LAIR_TAG
 fi
 
 log "setting fqdn to $DOMAIN"
