@@ -12,6 +12,11 @@ It's powered by [Dokku](https://github.com/progrium/dokku), so deploying applica
 
 Basically, Lair is the fastest way to get a Heroku-like development environment up and running.
 
+# Features
+
+- Buildpack powered deployments with dokku and buildstep
+- Real-time server statistics with scout_realtime
+
 # Installation
 
 There are three ways to install Lair:
@@ -39,6 +44,9 @@ First, make sure you have [Vagrant](http://www.vagrantup.com/downloads.html) and
 Add your ssh key to Dokku so that you can deploy apps via ssh:
 
 ```bash
+git clone https://github.com/qrohlf/lair.git
+cd lair
+vagrant up
 cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
 ```
 
@@ -52,7 +60,7 @@ export DOMAIN='yourdomain.com'
 git clone https://github.com/qrohlf/lair
 cd lair
 ./set-fqdn.sh $DOMAIN
-FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests --detailed-exitcodes manifests/site.pp
+FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests manifests/site.pp
 ```
 
 # Credits
