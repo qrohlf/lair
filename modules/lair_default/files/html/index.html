@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Congratulations! &middot; Lair </title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+    <body>
+
+    <header>
+  <div class="container text-center">
+    <h1>Congratulations!</h1>
+    <h2>Lair has been succesfully installed on your machine</h2>
+  </div>
+</header>
+
+    <div class="container site-content">
+      <h1>You did it!</h1>
+
+<p>Lair is now running on this machine. <strong>Time to deploy some apps!</strong></p>
+
+<h1>But first, add some SSH Keys</h1>
+
+<p>In order to deploy apps with git, you&#39;ll need to add your SSH keys to the list of authorized users. Don&#39;t worry, it only takes one command!</p>
+
+<p>If you have installed Lair to a server using bootstrap.sh or puppet, run this command (replacing you@yourserver.com with your server&#39;s ssh info):</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">cat ~/.ssh/id_rsa.pub <span class="p">|</span>ssh you@yourserver.com <span class="s2">&quot;sudo sshcommand acl-add dokku &#39;$USER@$HOSTNAME&#39;&quot;</span>
+</code></pre></div>
+<p>If you have installed Lair to your local machine using Vagrant, run this following command:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost &quot;sudo sshcommand acl-add dokku &#39;$USER@$HOSTNAME&#39;&quot;
+</code></pre></div>
+<p>You&#39;re now ready to deploy your first app to Lair!</p>
+
+<h1>Deploying an App</h1>
+
+<p>Lair uses git to deploy apps - just add a remote pointing to dokku@yourserver.com (or lair.local if you&#39;re running locally). Any changes pushed to that remote will be automatically deployed!</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">git remote add lair dokku@yourserver.com:subdomain <span class="c"># replace &quot;subdomain&quot; with the subdomain that you&#39;d like your app to be available at</span>
+git push lair master
+</code></pre></div>
+<p>For more information about deploying apps like how to set environment variables for your apps and use custom buildpacks, see the README and documentation for <a href="https://github.com/progrium/dokku">dokku</a>. (Dokku does all the heavy lifting in Lair when it comes to deployment.)</p>
+
+    </div>
+
+    <footer>
+  <div class="container text-center">
+    <p class="text-muted">Made by <a href="http://qrohlf.com">@qrohlf</a>.</p>
+  </div>
+</footer>
+
+    </body>
+</html>

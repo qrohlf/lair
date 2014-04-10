@@ -1,4 +1,4 @@
-include apt, git, scout, wardenclyffe_default
+include apt, git, scout, lair_default
 
 # Set the default exec path
 Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/local/bin/", "/usr/sbin/" ] }

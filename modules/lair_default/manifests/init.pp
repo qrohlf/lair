@@ -35,24 +35,24 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class wardenclyffe_default {
+class lair_default {
 
     # setup the default page
-    file {'/usr/share/nginx/wardenclyffe_default': 
+    file {'/usr/share/nginx/lair_default': 
         ensure => 'directory',
-        source => 'puppet:///modules/wardenclyffe_default/html',
+        source => 'puppet:///modules/lair_default/html',
         recurse => 'true',
         require => Package['nginx']
     }
 
-    file {'/etc/nginx/sites-available/wardenclyffe_default.conf':
-        source => 'puppet:///modules/wardenclyffe_default/wardenclyffe_default.conf',
-        require => File['/usr/share/nginx/wardenclyffe_default'],
+    file {'/etc/nginx/sites-available/lair_default.conf':
+        source => 'puppet:///modules/lair_default/lair_default.conf',
+        require => File['/usr/share/nginx/lair_default'],
     }
 
-    file {'/etc/nginx/sites-enabled/wardenclyffe_default.conf':
+    file {'/etc/nginx/sites-enabled/lair_default.conf':
         ensure => 'link',
-        target => '/etc/nginx/sites-available/wardenclyffe_default.conf',
+        target => '/etc/nginx/sites-available/lair_default.conf',
     }
 
     file {'/etc/nginx/sites-enabled/default':
@@ -61,8 +61,8 @@ class wardenclyffe_default {
 
     exec {"reload-nginx":
         command => 'nginx -s reload',
-        require => [File['/etc/nginx/sites-enabled/wardenclyffe_default.conf'], 
-            File['/usr/share/nginx/wardenclyffe_default'],
+        require => [File['/etc/nginx/sites-enabled/lair_default.conf'], 
+            File['/usr/share/nginx/lair_default'],
             Service['nginx']]
     }
 }
