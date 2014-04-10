@@ -35,3 +35,13 @@ git push lair master
 ```
 
 For more information about deploying apps like how to set environment variables for your apps and use custom buildpacks, see the README and documentation for [dokku](https://github.com/progrium/dokku). (Dokku does all the heavy lifting in Lair when it comes to deployment.)
+
+# Live Stats
+
+Lair provides live stats! Check out your [stats page](:5555). 
+
+If you're running Lair on a server, the stats page is also accessible at port 80 via `stats.yourserver.com`.
+
+# Enjoy!
+
+That's all! To replace this page, push an app to `dokku@yourdomain.com:yourdomain.com`.
