@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: success
 title: Congratulations!
 subtitle: Lair has been succesfully installed on your machine
 permalink: /success/index.html
