@@ -2,15 +2,15 @@
 layout: default
 subtitle: by <a href="http://qrohlf.com/">@qrohlf</a> &middot; view on <a href="https://github.com/qrohlf/lair">github</a>
 ---
-# Lair is your own personal PaaS
+# Lair is the simplest way to install a Heroku-like environment on your own box
 
 <img src="./images/terminal.gif" class="demo" alt="demo video" />
 
-Lair is a Platform as a Service provider that you can install with a single command through the magic of Vagrant and Puppet. 
+Lair is a Platform as a Service provider that you can install with a single command through the magic of Vagrant and Puppet. It lets you do a simple `git push` to get your latest code up and running.
 
-It's powered by [Dokku](https://github.com/progrium/dokku), so deploying applications becomes as simple as `git push`. It even includes a realtime activity monitor, so you can see what's going on under the hood from the comfort of your browser.
+It even includes a realtime activity monitor, so you can see what's going on under the hood, from the comfort of your browser.
 
-Basically, Lair is the fastest way to get a Heroku-like development environment up and running.
+Basically, Lair is your own personal Heroku-in-a-box.
 
 # Features
 
