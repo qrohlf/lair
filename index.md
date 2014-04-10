@@ -35,10 +35,10 @@ Before installing Lair on your server, make sure your server environment is supp
 To install Lair, ssh into your server and run the installer:
 
 ```bash
-$ DOMAIN='yourdomain.com' wget -qO- https://raw.github.com/qrohlf/lair/master/bootstrap.sh | sudo bash
+DOMAIN='yourdomain.com' wget -qO- https://raw.github.com/qrohlf/lair/master/bootstrap.sh | sudo bash
 ```
 
-Then, follow the deployment instructions to deploy your first app!
+Once Lair finishes installing, head over to http://yourdomain.com to deploy your first app!
 
 ## Installing Locally with Vagrant
 First, make sure you have [Vagrant](http://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed on your machine.
@@ -46,12 +46,12 @@ First, make sure you have [Vagrant](http://www.vagrantup.com/downloads.html) and
 Then, clone the repo and start Vagrant:
 
 ```bash
-$ git clone https://github.com/qrohlf/lair.git
-$ cd lair
-$ vagrant up
+git clone https://github.com/qrohlf/lair.git
+cd lair
+vagrant up
 ```
 
-Finally, follow the deployment instructions to deploy your first app!
+Once Lair finishes installing, head over to [http://lair.local](http://lair.local) to deploy your first app!
 
 ## Installing Manually
 Lair is really just a collection of Puppet scripts and modules, so it should be really easy to get it working on any machine that has puppet installed. 
@@ -59,12 +59,14 @@ Lair is really just a collection of Puppet scripts and modules, so it should be 
 Assuming you have Puppet already installed, all you need to do to get Lair up and running is:
 
 ```bash
-$ export DOMAIN='yourdomain.com'
-$ git clone https://github.com/qrohlf/lair
-$ cd lair
-$ ./set-fqdn.sh $DOMAIN
-$ FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests manifests/site.pp
+export DOMAIN='yourdomain.com'
+git clone https://github.com/qrohlf/lair
+cd lair
+./set-fqdn.sh $DOMAIN
+FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests manifests/site.pp
 ```
+
+Once Lair finishes installing, head over to http://yourdomain.com to deploy your first app!
 
 # Deploying to Lair
 
@@ -73,7 +75,7 @@ You'll need to add an ssh key to Lair for each machine you want to deploy from. 
 (note: run this on your development machine - not on the server)
 
 ```bash
-$ cat ~/.ssh/id_rsa.pub |ssh you@yourserver.com "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
+cat ~/.ssh/id_rsa.pub |ssh you@yourdomain.com "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
 ```
 
 If you're using Lair locally with Vagrant, run this command instead:
@@ -82,7 +84,7 @@ If you're using Lair locally with Vagrant, run this command instead:
 cat ~/.ssh/id_rsa.pub |ssh -i ~/.vagrant.d/insecure_private_key -p 2222 vagrant@localhost "sudo sshcommand acl-add dokku '$USER@$HOSTNAME'"
 ```
 
-## Deploying with Git
+## Pushing Changes with Git
 
 First, add a git remote pointing to Lair (this only needs to be done once per repo). Replace `yourdomain.com` with your domain, or `lair.local` if you're running Lair locally.
 
