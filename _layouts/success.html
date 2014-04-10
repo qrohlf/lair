@@ -16,29 +16,20 @@
     {% include footer.html %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script>
-    // parallax header
-    jQuery(document).ready(function($) {
-        $(window).scroll( function()
+    {% include parallax.js %}
+    // fix for relative port url
+    document.addEventListener('click', function(event) {
+        var target = event.target;
+        if (target.tagName.toLowerCase() == 'a')
         {
-            var scroll = $(window).scrollTop(), slowScroll = scroll/4;
-            var headerheight = $('header').height();
-            $('header').css({ transform: "translateY(" + slowScroll + "px)" });
-            $('header .container').css({ opacity: Math.min(1, 1.2 - scroll/headerheight) });
-        });
-        // fix for relative port urls
-        document.addEventListener('click', function(event) {
-            var target = event.target;
-            if (target.tagName.toLowerCase() == 'a')
+            var port = target.getAttribute('href').match(/^:(\d+)(.*)/);
+            if (port)
             {
-                var port = target.getAttribute('href').match(/^:(\d+)(.*)/);
-                if (port)
-                {
-                    target.href = port[2];
-                    target.port = port[1];
-                }
+                target.href = port[2];
+                target.port = port[1];
             }
-        }, false);
-    });
+        }
+    }, false);
     </script>
     </body>
 </html>
