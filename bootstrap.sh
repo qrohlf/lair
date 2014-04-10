@@ -44,6 +44,6 @@ elif [[ -n $LAIR_TAG ]]; then
 fi
 
 log "setting fqdn to $DOMAIN"
-./set-fqdn.sh $DOMAIN
+./scripts/set-fqdn.sh $DOMAIN
 log "provisioning with Puppet... this will take a while"
 FACTER_fqdn="$DOMAIN" puppet apply --modulepath modules --manifestdir manifests --detailed-exitcodes manifests/site.pp
