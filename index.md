@@ -112,4 +112,4 @@ Lair is actually just a bundle that brings together several excellent tools into
 
 # Contributing
 
-Pull requests are welcome! Fork Lair on [Github](https://github.com/qrohlf/lair)
+Pull requests are welcome! Fork Lair on [Github](https://github.com/qrohlf/lair/fork)

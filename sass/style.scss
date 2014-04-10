@@ -1,4 +1,3 @@
-@import "mixins";
 @import "pygments";
 // Reference bootstrap variables
 @import "../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap/variables";
@@ -8,6 +7,7 @@ $palette-2: #FFA52A;
 $palette-3: #FFD92D;
 $palette-4: #47B6FF;
 $palette-5: #2D85D3;
+$header-background: #BC370D;
 
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $headings-font-weight: 600;
@@ -74,7 +74,15 @@ html {
 
 header {
   color: white;
-  background-color: saturate($palette-1, 20%);
+  background-color: $header-background;
+  background-image: url(../images/background-header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
   h1 {
     font-size: $font-size-base*4;
     font-weight: 600;
@@ -100,13 +108,6 @@ header {
       padding-bottom: 6rem;
     }
   }
-
-  background-image: url(../images/background-header.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
 }
 
 body {
